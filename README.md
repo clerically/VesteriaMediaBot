@@ -9,8 +9,8 @@ this was NOT fun to create but heyyyyyyyyyyyyyy it exists now so. yea.
 
 ## Installation
 
-This assumes you already have created a Twitter bot (if not go [make one](https://developer.twitter.com/en), they're fun)
-Create a file called `keys.json` in `src/data/` following this format:
+This assumes you already have created a Twitter bot (not yet? you should go [make one](https://developer.twitter.com/en), they're fun)
+Create a file called `keys.json` in the `src/data` directory following this format:
 
 ```json
 {
