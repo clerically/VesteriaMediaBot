@@ -32,5 +32,7 @@ This is absolutely a monstrosity of code and I hate looking at it. I did this in
 
 Regardless of my whining and what I said a minute ago, I did actually enjoy working on this because it gave me time to work on my Python skills as well as get more acquainted with Roblox's API - which is something that I *should have* done in the first place before trying to webscrape data that wasn't even actually there.
 
+If you have any issues, please make sure to make a GitHub issue instead of just complaining to me and I'll be happy to look into it.
+
 Anyways, thanks for reading.
 Mark 👋
