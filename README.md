@@ -24,6 +24,9 @@ Create a file called `keys.json` in the `src/data` directory following this form
         "secret": "YOUR_ACCESS_SECRET_HERE"
     }
 }
+
+You can just modify the `config.json` file in the same directory to configure your bot's bio.
+
 ```
 
 ## Notes/Other
