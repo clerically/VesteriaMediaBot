@@ -1,0 +1,13 @@
+{
+    "like_tags": {
+        "tags": ["vesteria", "Vesteria"],
+        "check_interval": 3,
+        "max_posts": 15
+    },
+
+    "place_updates": {
+        "main": 2376885433,
+        "development": 2015602902,
+        "check_interval": 10
+    }
+}
