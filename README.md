@@ -9,6 +9,12 @@ this was NOT fun to create but heyyyyyyyyyyyyyy it exists now so. yea.
 
 ## Installation
 
+Pip module requirements:
+
+- requests
+- tweepy
+- maybe datetime i forget if it is part of base Python or not
+
 This assumes you already have created a Twitter bot (not yet? you should go [make one](https://developer.twitter.com/en), they're fun)
 Create a file called `keys.json` in the `src/data` directory following this format:
 
@@ -24,10 +30,10 @@ Create a file called `keys.json` in the `src/data` directory following this form
         "secret": "YOUR_ACCESS_SECRET_HERE"
     }
 }
-
-You can just modify the `config.json` file in the same directory to configure your bot's bio.
-
 ```
+
+You can just modify the `info.json` file in the same directory to configure your bot's bio.
+
 
 ## Notes/Other
 
