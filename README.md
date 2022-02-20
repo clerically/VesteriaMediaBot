@@ -2,6 +2,8 @@
 hi this is mark speaking to you at 11:00 PM
 this was NOT fun to create but heyyyyyyyyyyyyyy it exists now so. yea.
 
+i will be updating this sporadically throughout 2022 or whenever I am bored, it's kind of a cool project but doesn't really serve a functional purpose (yet at least since the bot has 0 following at the moment)
+
 ## Features
 
 - Automatically likes and retweets posts with media (images, links?) on the #Vesteria tag
@@ -35,7 +37,7 @@ Create a file called `keys.json` in the `src/data` directory following this form
 
 You can just modify the `info.json` file in the same directory to configure your bot's bio.
 
-**PLEASE FOR THE LOVE OF ALL THAT IS SACRED,** change the "owner_id" config in `info.json` to your Twitter id. If you don't know it, you can use a site like [this](https://tweeterid.com/)
+**PLEASE FOR THE LOVE OF ALL THAT IS SACRED,** change the "owner_id" config in `info.json` to your Twitter id. If you don't know it, you can use a site like [this](https://tweeterid.com/) to get it for you.
 ## Notes/Other
 
 This is absolutely a monstrosity of code and I hate looking at it. I did this in a speedrun of 2.5 hours and I regret only half of it.
@@ -44,5 +46,5 @@ Regardless of my whining and what I said a minute ago, I did actually enjoy work
 
 If you have any issues, please make sure to make a GitHub issue instead of just complaining to me and I'll be happy to look into it.
 
-Anyways, thanks for reading.
+Anyways, thanks for reading & have fun.
 Mark 👋
