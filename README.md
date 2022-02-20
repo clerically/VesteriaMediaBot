@@ -15,8 +15,6 @@ Pip module requirements:
 
 - requests
 - tweepy
-- maybe datetime i forget if it is part of base Python or not
-- waiting
 
 This assumes you already have created a Twitter bot (not yet? you should go [make one](https://developer.twitter.com/en), they're fun)
 Create a file called `keys.json` in the `src/data` directory following this format:
