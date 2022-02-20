@@ -53,12 +53,10 @@ def like_tag(tagName, limit=25):
             status = _twitterApi.get_status(tweet.id)
             print(f"[LikeTag]: Checking tweet {tweet.id} on tag {tagName}")
 
-            if ("media" in tweet.entities):
-                if (not status.favorited):
-                    tweet.favorite()
-                    _twitterApi.retweet(tweet.id)
+            if (status.favorited == False):
+                tweet.favorite()
 
-                    time.sleep(1)
+                time.sleep(1)
 
         except tweepy.TweepError as err:
             print(f"Failed to perform like functions on tweet {tweet.id}: {err.reason}")
