@@ -12,7 +12,13 @@ import modules.requester as requester
 
 # Global variables
 
-_config = None
+config = None
+info = None
+
+# Loop checks
+
+started_likes = False
+started_updates = False
 
 # Twitter authentication
 
@@ -37,21 +43,32 @@ def updateBotInfo():
         info = json.load(_infoFile)
 
         _twitterApi.update_profile(
-            info["name"],
+            str.replace(info["name"], "%VERSION%", info["version"]),
             "",
             info["location"],
             info["description"]
         )
 
+def log(message):
+    try:
+        _twitterApi.send_direct_message(
+            config["twitter"]["owner_id"],
+            message
+        )
+    except:
+        print(message)
+
+def is_value_matching(input, value):
+    if (input == value):
+        return True
+    return False
+
 # Main functions
 
 def like_tag(tagName, limit=25):
-    print(f"[LikeTag]: Beginning search on tag {tagName}...")
-
     for tweet in tweepy.Cursor(_twitterApi.search, str(tagName), include_entities=True).items(limit):
         try:
             status = _twitterApi.get_status(tweet.id)
-            print(f"[LikeTag]: Checking tweet {tweet.id} on tag {tagName}")
 
             if (status.favorited == False):
                 tweet.favorite()
@@ -59,18 +76,12 @@ def like_tag(tagName, limit=25):
                 time.sleep(1)
 
         except tweepy.TweepError as err:
-            print(f"Failed to perform like functions on tweet {tweet.id}: {err.reason}")
+            log(f"Failed to perform like functions on tweet {tweet.id}: {err.reason}")
         except StopIteration:
             break
-    
-    print(f"[LikeTag]: Finished search on tag {tagName}")
 
 def check_place_updated(placeId):
-    print("[CheckUpdated]: Starting updated check...")
-
     updated_places = requester.get_place_data(placeId)
-
-    print("[CheckUpdated]: Finished updated check")
 
     index_count = len(updated_places)
     if (index_count >= 1):
@@ -85,33 +96,30 @@ def check_place_updated(placeId):
 
             _twitterApi.update_status(f"{place_name} has been updated.\n\nBranch: {branch}\nLink:{game_link}")
 
-    print(f"[CheckUpdated]: Posted {index_count} statuses relating to updated places")
+        log(f"[CheckUpdated]: Posted {index_count} status(es) relating to updated places")
 
 # Loop functions
 
 def loop_like_tags():
-    print("[LikeTag_Loop]: Starting...")
+    log("[LikeTag_Loop]: Started")
+    started_likes = True
 
     while True:
-        print("[LikeTag_Loop]: Beginning like check...")
-
         for tag in config["like_tags"]["tags"]:
             like_tag(f"#{tag}", config["like_tags"]["max_posts"])
         
-        print("[LikeTag_Loop]: Finished like check")
         time.sleep(config["like_tags"]["check_interval"] * 60)
 
 def loop_check_places_updated():
-    print("[CheckUpdated_Loop]: Starting...")
+    log("[CheckUpdated_Loop]: Started")
+    started_updates = True
 
     while True:
-        print("[CheckUpdated_Loop]: Beginning like check...")
 
         check_place_updated(config["place_updates"]["main"])
         time.sleep(10)
         check_place_updated(config["place_updates"]["development"])
         
-        print("[CheckUpdated_Loop]: Finished like check")
         time.sleep(config["place_updates"]["check_interval"] * 60)
 
 # Startup
@@ -119,9 +127,12 @@ def loop_check_places_updated():
 if __name__ == "__main__":
     updateBotInfo()
 
-    # Load config variable from data file
+    # Load configs from data files
     with open("src/data/config.json", "r") as _configFile:
         config = json.load(_configFile)
+
+    with open("src/data/info.json", "r") as _infoFile:
+        info = json.load(_infoFile)
 
     # Bot main stuff
 
@@ -132,6 +143,9 @@ if __name__ == "__main__":
     thread_check_places = threading.Thread(target = loop_check_places_updated)
     thread_check_places.setDaemon(True)
     thread_check_places.start()
+
+    botVersion = info["version"]
+    log(f"Bot started successfully. Active version: {botVersion}")
 
     while True: # Keeps the main function alive :D
         pass

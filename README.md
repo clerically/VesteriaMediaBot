@@ -14,6 +14,7 @@ Pip module requirements:
 - requests
 - tweepy
 - maybe datetime i forget if it is part of base Python or not
+- waiting
 
 This assumes you already have created a Twitter bot (not yet? you should go [make one](https://developer.twitter.com/en), they're fun)
 Create a file called `keys.json` in the `src/data` directory following this format:
@@ -34,7 +35,7 @@ Create a file called `keys.json` in the `src/data` directory following this form
 
 You can just modify the `info.json` file in the same directory to configure your bot's bio.
 
-
+**PLEASE FOR THE LOVE OF ALL THAT IS SACRED,** change the "owner_id" config in `info.json` to your Twitter id. If you don't know it, you can use a site like [this](https://tweeterid.com/)
 ## Notes/Other
 
 This is absolutely a monstrosity of code and I hate looking at it. I did this in a speedrun of 2.5 hours and I regret only half of it.

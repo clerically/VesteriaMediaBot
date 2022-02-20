@@ -9,5 +9,9 @@
         "main": 2376885433,
         "development": 2015602902,
         "check_interval": 7.5
+    },
+
+    "twitter": {
+        "owner_id": 949715293793796096
     }
 }

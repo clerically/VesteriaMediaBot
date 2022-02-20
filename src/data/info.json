@@ -1,7 +1,7 @@
 {
-    "version": "1.0",
+    "version": "1.0b",
 
-    "name": "VTC Bot",
+    "name": "VTC Bot (v%VERSION%)",
     "description": "A bot that supports the Vesteria Twitter Community.\n\nProvides place update tracking as well as boosts posts under the #Vesteria tag.\n\nCreated by @company113_",
     "location": "Nilgarf"
 }
